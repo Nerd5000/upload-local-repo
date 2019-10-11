@@ -1,5 +1,4 @@
-from os import remove
-from os import chmod
+from os import remove, chmod
 from subprocess import call
 
 repoPath=input('Enter Repo Path : ')
