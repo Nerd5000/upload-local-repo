@@ -2,13 +2,14 @@ from os import remove
 from os import chmod
 from subprocess import call
 
+repoPath=input('Enter Repo Path : ')
 gitCommitComment = input('Enter Commit Comment : ')
 gitURL = input('Enter Repo URL : ')
 gitUserName = input('Enter your Name : ')
 gitUserEmail = input('Enter your Email : ')
 gitBranchName = input('Enter Branch Name : ')
 
-gitFile = open('git.sh', 'w')
+gitFile = open('{0}/git.sh'.format(repoPath), 'w')
 gitFile.write(
     """
 #!/bin/sh
@@ -22,6 +23,6 @@ git push origin -f {4}
 """.format(gitUserName, gitUserEmail, gitCommitComment, gitURL, gitBranchName))
 gitFile.close()
 
-chmod('./git.sh', 0o775)
-call('./git.sh', shell=True)
-remove('./git.sh')
+chmod('{0}/git.sh'.format(repoPath), 0o775)
+call('{0}/git.sh'.format(repoPath), shell=True)
+remove('{0}/git.sh'.format(repoPath))
